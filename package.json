@@ -1,0 +1,17 @@
+{
+  "name": "mycampus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "tsx watch --env-file .env src/server.ts",
+    "start": "node dist/server.mjs",
+    "build": "tsup src --format esm",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "22.2.0",
+    "typescript": "5.5.4",
+    "vitest": "2.0.5"
+  }
+}
