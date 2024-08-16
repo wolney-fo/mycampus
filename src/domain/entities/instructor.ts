@@ -1,3 +1,7 @@
-import { Person } from "./person";
+import { Entity } from "../../core/entities/entity";
 
-export class Instructor extends Person {}
+interface InstructorProps {
+  name: string;
+}
+
+export class Instructor extends Entity<InstructorProps> {}
