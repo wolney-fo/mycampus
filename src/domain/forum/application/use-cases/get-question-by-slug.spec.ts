@@ -25,7 +25,6 @@ describe("Get Question by Slug Use Case", () => {
     });
 
     expect(question.id).toBeTruthy();
-    expect(question.title).toEqual("New Question");
   });
 
   it("should not be able to get a question by slug", async () => {

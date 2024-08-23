@@ -11,6 +11,7 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
+    "@faker-js/faker": "8.4.1",
     "@types/node": "22.2.0",
     "typescript": "5.5.4",
     "vite-tsconfig-paths": "5.0.1",
