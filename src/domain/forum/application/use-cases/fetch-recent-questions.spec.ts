@@ -2,7 +2,6 @@ import { makeQuestion } from "test/factories/make-question";
 import { InMemoryQuestionAttachmentsRepository } from "test/repositories/in-memory-question-attachments-repository";
 import { InMemoryQuestionsRepository } from "test/repositories/in-memory-questions-repository";
 import { describe, it } from "vitest";
-import { Slug } from "../../enterprise/entities/value-objects/slug";
 import { FetchRecentQuestionsUseCase } from "./fetch-recent-questions";
 
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository;
