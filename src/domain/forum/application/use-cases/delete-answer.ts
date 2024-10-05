@@ -1,6 +1,6 @@
 import { Either, left, right } from "@/core/either";
-import { NotAllowedError } from "@/domain/forum/application/use-cases/errors/not-allowed-error";
-import { ResourceNotFoundError } from "@/domain/forum/application/use-cases/errors/resource-not-found-error";
+import { NotAllowedError } from "@/core/errors/errors/not-allowed-error";
+import { ResourceNotFoundError } from "@/core/errors/errors/resource-not-found-error";
 import { AnswersRepository } from "../repositories/answers-repository";
 
 interface DeleteAnswerUseCaseRequest {
