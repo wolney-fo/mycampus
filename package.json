@@ -1,23 +1,40 @@
 {
   "name": "mycampus",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
-    "start:dev": "tsx watch --env-file .env src/server.ts",
-    "start": "node dist/server.mjs",
-    "build": "tsup src --format esm",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main"
   },
   "devDependencies": {
     "@faker-js/faker": "8.4.1",
     "@types/node": "22.2.0",
     "typescript": "5.5.4",
     "vite-tsconfig-paths": "5.0.1",
-    "vitest": "2.0.5"
+    "vitest": "2.0.5",
+    "@nestjs/cli": "10.0.0",
+    "@nestjs/schematics": "10.0.0",
+    "@nestjs/testing": "10.0.0",
+    "@types/express": "4.17.17",
+    "@types/supertest": "6.0.0",
+    "source-map-support": "0.5.21",
+    "supertest": "7.0.0",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0"
   },
   "dependencies": {
+    "@nestjs/common": "10.0.0",
+    "@nestjs/core": "10.0.0",
+    "@nestjs/platform-express": "10.0.0",
+    "reflect-metadata": "0.2.0",
+    "rxjs": "7.8.1",
     "dayjs": "1.11.12"
   }
 }
