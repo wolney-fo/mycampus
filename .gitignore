@@ -6,3 +6,6 @@ coverage
 # Env
 .env
 .env.test
+
+# Docker
+data
