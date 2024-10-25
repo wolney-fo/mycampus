@@ -29,6 +29,10 @@
 			},
 			"suspicious": {
 				"noMisleadingCharacterClass": "off"
+			},
+			"complexity": {
+				"noForEach": "off",
+				"noStaticOnlyClass": "off"
 			}
 		}
 	},
