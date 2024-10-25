@@ -25,7 +25,7 @@ export class AuthenticateController {
 	) {}
 
 	@Post()
-	@HttpCode(200)
+	@HttpCode(201)
 	async handle(@Body() body: AuthenticateBodySchema) {
 		const { email, password } = body
 
