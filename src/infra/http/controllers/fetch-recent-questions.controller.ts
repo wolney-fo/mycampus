@@ -1,5 +1,4 @@
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
-import { AuthModule } from '@/infra/auth/auth.module'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import {
 	BadRequestException,
@@ -23,7 +22,6 @@ type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
 @Controller('questions')
-@UseGuards(AuthModule)
 export class FetchRecentQuestionsController {
 	constructor(private fetchRecentQuestions: FetchRecentQuestionsUseCase) {}
 
