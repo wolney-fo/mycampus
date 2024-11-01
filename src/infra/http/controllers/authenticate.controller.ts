@@ -1,15 +1,14 @@
+import { InvalidCredentialsError } from '@/core/errors/errors/invalid-credentials-error'
+import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import {
+	BadRequestException,
 	Body,
 	Controller,
 	HttpCode,
 	Post,
 	UnauthorizedException,
 } from '@nestjs/common'
-import { JwtService } from '@nestjs/jwt'
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { z } from 'zod'
-import { compare } from 'bcryptjs'
-import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 
 const authenticateBodySchema = z.object({
 	email: z.string().email(),
@@ -33,7 +32,14 @@ export class AuthenticateController {
 		})
 
 		if (result.isLeft()) {
-			throw new Error()
+			const error = result.value
+
+			switch (error.constructor) {
+				case InvalidCredentialsError:
+					throw new UnauthorizedException(error.message)
+				default:
+					throw new BadRequestException()
+			}
 		}
 
 		const { accessToken } = result.value

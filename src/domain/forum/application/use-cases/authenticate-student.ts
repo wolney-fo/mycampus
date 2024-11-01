@@ -1,5 +1,5 @@
 import { Either, left, right } from '@/core/either'
-import { InvalidCredentials } from '@/core/errors/errors/invalid-credentials'
+import { InvalidCredentialsError } from '@/core/errors/errors/invalid-credentials-error'
 import { Encrypter } from '../cryptography/encrypter'
 import { HashComparer } from '../cryptography/hash-comparer'
 import { StudentsRepository } from '../repositories/students-repository'
@@ -11,7 +11,7 @@ interface AuthenticateStudentUseCaseRequest {
 }
 
 type AuthenticateStudentUseCaseResponse = Either<
-	InvalidCredentials,
+	InvalidCredentialsError,
 	{ accessToken: string }
 >
 
@@ -30,7 +30,7 @@ export class AuthenticateStudentUseCase {
 		const student = await this.studentRepository.findByEmail(email)
 
 		if (!student) {
-			return left(new InvalidCredentials())
+			return left(new InvalidCredentialsError())
 		}
 
 		const isPasswordValid = this.hashComparer.compare(
@@ -39,7 +39,7 @@ export class AuthenticateStudentUseCase {
 		)
 
 		if (!isPasswordValid) {
-			return left(new InvalidCredentials())
+			return left(new InvalidCredentialsError())
 		}
 
 		const accessToken = await this.encrypter.encrypt({
