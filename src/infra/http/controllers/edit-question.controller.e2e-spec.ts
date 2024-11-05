@@ -54,7 +54,7 @@ describe('Edit question (E2E)', () => {
 
 		const questionOnDatabase = await prisma.question.findFirst({
 			where: {
-				title: 'Question title',
+				title: 'New title',
 			},
 		})
 
