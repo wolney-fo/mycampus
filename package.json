@@ -43,6 +43,7 @@
     "vitest": "2.0.5"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.688.0",
     "@biomejs/biome": "1.9.3",
     "@nestjs/common": "10.4.7",
     "@nestjs/config": "3.2.3",
