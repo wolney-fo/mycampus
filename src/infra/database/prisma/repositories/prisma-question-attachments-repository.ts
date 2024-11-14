@@ -9,6 +9,15 @@ export class PrismaQuestionAttachmentsRepository
 	implements QuestionAttachmentsRepository
 {
 	constructor(private prisma: PrismaService) {}
+	async createMany(attachments: QuestionAttachment[]): Promise<void> {
+		if (attachments.length === 0) {
+			return
+		}
+
+		const data = PrismaQuestionAttachmentMapper.toPrismaUpdateMany(attachments)
+
+		await this.prisma.attachment.updateMany(data)
+	}
 
 	async findManyByQuestionId(
 		questionId: string
@@ -20,6 +29,24 @@ export class PrismaQuestionAttachmentsRepository
 		})
 
 		return questionAttachments.map(PrismaQuestionAttachmentMapper.toDomain)
+	}
+
+	async deleteMany(attachments: QuestionAttachment[]): Promise<void> {
+		if (attachments.length === 0) {
+			return
+		}
+
+		const attachmentsIds = attachments.map(attachment => {
+			return attachment.id.toString()
+		})
+
+		await this.prisma.attachment.deleteMany({
+			where: {
+				id: {
+					in: attachmentsIds,
+				},
+			},
+		})
 	}
 
 	async deleteManyByQuestionId(questionId: string): Promise<void> {
