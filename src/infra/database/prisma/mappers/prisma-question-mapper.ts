@@ -15,7 +15,7 @@ export class PrismaQuestionMapper {
 					: null,
 				slug: Slug.create(raw.slug),
 				createdAt: raw.createdAt,
-				updatedAt: raw.createdAt,
+				updatedAt: raw.updatedAt,
 			},
 			new UniqueEntityId(raw.id)
 		)
